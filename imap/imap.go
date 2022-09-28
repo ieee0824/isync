@@ -1,4 +1,4 @@
-package isync
+package imap
 
 import "sync"
 
