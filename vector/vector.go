@@ -55,7 +55,6 @@ func (impl *Vec[T]) Pop() (*T, error) {
 
 var ErrLockFailed = errors.New("failed lock vec")
 
-// 削除処理に並列動作は危険なので暗黙的にlock処理をする実装は作らない
 func (impl *Vec[T]) UnsafeRemove(i int) error {
 	if i < 0 || len(impl.vals) <= i {
 		return fmt.Errorf("out of range access: len: %d, idx: %d", len(impl.vals), i)
