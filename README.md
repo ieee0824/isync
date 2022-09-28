@@ -1,2 +1,2 @@
 # isync
-Concurrently accessible map/slice data structure support for Go
+Concurrently accessible map/vector data structure support for Go
