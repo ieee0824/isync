@@ -43,7 +43,7 @@ func TestVec_Append(t *testing.T) {
 			lo.ForEach(testData.vals, func(v any, _ int) {
 				vec.Append(v)
 			})
-			assert.Equal(t, vec.Slice(), testData.vals)
+			assert.Equal(t, vec.GoSlice(), testData.vals)
 		})
 	})
 }
@@ -81,7 +81,7 @@ func TestVec_Len(t *testing.T) {
 			lo.ForEach(testData.vals, func(v any, _ int) {
 				vec.Append(v)
 			})
-			assert.Equal(t, vec.Slice(), testData.vals)
+			assert.Equal(t, vec.GoSlice(), testData.vals)
 			assert.Equal(t, vec.Len(), len(testData.vals))
 		})
 	})
@@ -115,7 +115,7 @@ func TestVec_Push(t *testing.T) {
 			lo.ForEach(testData.vals, func(v any, _ int) {
 				vec.Push(v)
 			})
-			assert.Equal(t, vec.Slice(), testData.vals)
+			assert.Equal(t, vec.GoSlice(), testData.vals)
 		})
 	})
 }
@@ -148,7 +148,7 @@ func TestVec_Pop(t *testing.T) {
 			lo.ForEach(testData.vals, func(v any, _ int) {
 				vec.Push(v)
 			})
-			assert.Equal(t, vec.Slice(), testData.vals)
+			assert.Equal(t, vec.GoSlice(), testData.vals)
 
 			buf := []any{}
 			for {
@@ -239,7 +239,7 @@ func TestVec_UnsafeRemove(t *testing.T) {
 			lo.ForEach(testData.vals, func(v any, _ int) {
 				vec.Push(v)
 			})
-			assert.Equal(t, vec.Slice(), testData.vals)
+			assert.Equal(t, vec.GoSlice(), testData.vals)
 
 			removeErr := vec.UnsafeRemove(testData.idx)
 			if testData.err {
@@ -253,7 +253,7 @@ func TestVec_UnsafeRemove(t *testing.T) {
 				}
 			}
 
-			assert.Equal(t, testData.want, vec.Slice())
+			assert.Equal(t, testData.want, vec.GoSlice())
 		})
 	})
 }
@@ -315,7 +315,7 @@ func TestVec_At(t *testing.T) {
 			lo.ForEach(testData.vals, func(v any, _ int) {
 				vec.Push(v)
 			})
-			assert.Equal(t, vec.Slice(), testData.vals)
+			assert.Equal(t, vec.GoSlice(), testData.vals)
 
 			v, removeErr := vec.At(testData.idx)
 			if testData.err {
