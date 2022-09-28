@@ -76,16 +76,16 @@ func (impl *Vec[T]) UnsafeAt(i int) (*T, error) {
 	return &impl.vals[i], nil
 }
 
-func (impl *Vec[T]) UnsafeSlice() []T {
+func (impl *Vec[T]) UnsafeGoSlice() []T {
 	ret := make([]T, len(impl.vals))
 	copy(ret, impl.vals)
 	return ret
 }
 
-func (impl *Vec[T]) Slice() []T {
+func (impl *Vec[T]) GoSlice() []T {
 	impl.mutex.Lock()
 	defer impl.mutex.Unlock()
-	return impl.UnsafeSlice()
+	return impl.UnsafeGoSlice()
 }
 
 func (impl *Vec[T]) Lock() {
